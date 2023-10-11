@@ -39,7 +39,7 @@ public class LL
 //Print LinkedList
 public void printList(){
     if(head==null){
-    System.err.println("List is Empty");
+    System.out.println("List is Empty");
     return;
     }
     Node currNode=head; //cretae a current node 
@@ -49,7 +49,41 @@ public void printList(){
   }
   System.out.println("NULL");
 }
+
+//Delete First Node
+
+public void DeleteFirst(){
+    if(head == null){
+        System.out.println("The List is Empty");
+        return;
+    }
+    head = head.next; //If head is not null
+}
+
+//Delete Last Node
+
+public void DeleteLast(){ 
+    if(head == null){
+        System.out.println("The List is Empty");
+        return;
+    }
     
+    if(head.next == null){ //In this case one node in Lineked List
+     head = null;
+     return;
+
+    }
+
+    Node SecondLast=head;
+    Node LastNode=head.next; // head.next = null -> LastNode = null
+    
+    //Traverse operartion
+    while(LastNode.next!=null){
+     LastNode=LastNode.next; 
+     SecondLast=SecondLast.next; 
+    }
+    SecondLast.next=null;
+}
 
     public static void main(String[] args) 
     {
@@ -60,6 +94,10 @@ public void printList(){
         list.addLast("LinekdList");
         //list.printList();
         list.addFirst("This");
+        list.printList();
+        list.DeleteFirst();//Delete First Node
+        list.printList();
+        list.DeleteLast();//Delete Last Node
         list.printList();
 
     }
